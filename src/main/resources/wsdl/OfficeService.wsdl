@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://services.wahyu.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax21="http://model.wahyu.com/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://services.wahyu.com">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://model.wahyu.com/xsd">
+            <xs:complexType name="Office">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="id" type="xs:int"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax22="http://model.wahyu.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.wahyu.com">
+            <xs:import namespace="http://model.wahyu.com/xsd"/>
+            <xs:element name="getOfficeByName">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="names" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getOfficeByNameResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax22:Office"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAllOffice">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAllOfficeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax22:Office"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addOffice">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="o" nillable="true" type="ax22:Office"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getOfficeByNameRequest">
+        <wsdl:part name="parameters" element="ns:getOfficeByName"/>
+    </wsdl:message>
+    <wsdl:message name="getOfficeByNameResponse">
+        <wsdl:part name="parameters" element="ns:getOfficeByNameResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getAllOfficeRequest">
+        <wsdl:part name="parameters" element="ns:getAllOffice"/>
+    </wsdl:message>
+    <wsdl:message name="getAllOfficeResponse">
+        <wsdl:part name="parameters" element="ns:getAllOfficeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addOfficeRequest">
+        <wsdl:part name="parameters" element="ns:addOffice"/>
+    </wsdl:message>
+    <wsdl:portType name="OfficeServicesPortType">
+        <wsdl:operation name="getOfficeByName">
+            <wsdl:input message="ns:getOfficeByNameRequest" wsaw:Action="urn:getOfficeByName"/>
+            <wsdl:output message="ns:getOfficeByNameResponse" wsaw:Action="urn:getOfficeByNameResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllOffice">
+            <wsdl:input message="ns:getAllOfficeRequest" wsaw:Action="urn:getAllOffice"/>
+            <wsdl:output message="ns:getAllOfficeResponse" wsaw:Action="urn:getAllOfficeResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addOffice">
+            <wsdl:input message="ns:addOfficeRequest" wsaw:Action="urn:addOffice"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="OfficeServicesSoap11Binding" type="ns:OfficeServicesPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getOfficeByName">
+            <soap:operation soapAction="urn:getOfficeByName" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllOffice">
+            <soap:operation soapAction="urn:getAllOffice" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addOffice">
+            <soap:operation soapAction="urn:addOffice" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="OfficeServicesSoap12Binding" type="ns:OfficeServicesPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getOfficeByName">
+            <soap12:operation soapAction="urn:getOfficeByName" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllOffice">
+            <soap12:operation soapAction="urn:getAllOffice" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addOffice">
+            <soap12:operation soapAction="urn:addOffice" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="OfficeServicesHttpBinding" type="ns:OfficeServicesPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="getOfficeByName">
+            <http:operation location="getOfficeByName"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllOffice">
+            <http:operation location="getAllOffice"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addOffice">
+            <http:operation location="addOffice"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="OfficeServices">
+        <wsdl:port name="OfficeServicesHttpSoap11Endpoint" binding="ns:OfficeServicesSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/OfficeServices"/>
+        </wsdl:port>
+        <wsdl:port name="OfficeServicesHttpSoap12Endpoint" binding="ns:OfficeServicesSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/OfficeServices"/>
+        </wsdl:port>
+        <wsdl:port name="OfficeServicesHttpEndpoint" binding="ns:OfficeServicesHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/OfficeServices"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
