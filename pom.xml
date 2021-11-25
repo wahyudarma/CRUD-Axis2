@@ -32,20 +32,51 @@
                     </execution>
                 </executions>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.axis2</groupId>-->
+<!--                <artifactId>axis2-aar-maven-plugin</artifactId>-->
+<!--                <version>1.8.0</version>-->
+<!--                <configuration>-->
+<!--                    <wsdlFile>${project.build.directory}/OfficeService.wsdl</wsdlFile>-->
+<!--                    <servicesXmlFile>${basedir}/src/main/resources/services/services-offices.xml</servicesXmlFile>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>aar</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+
+        <!--     Group       -->
             <plugin>
                 <groupId>org.apache.axis2</groupId>
                 <artifactId>axis2-aar-maven-plugin</artifactId>
                 <version>1.8.0</version>
-                <configuration>
-                    <wsdlFile>${project.build.directory}/OfficeService.wsdl</wsdlFile>
-                    <servicesXmlFile>${basedir}/src/main/resources/services/services-offices.xml</servicesXmlFile>
-                </configuration>
                 <executions>
                     <execution>
+                        <id>first-execution</id>
                         <phase>package</phase>
                         <goals>
                             <goal>aar</goal>
                         </goals>
+                        <configuration>
+                            <wsdlFile>${basedir}/src/main/resources/wsdl/EmployeeService.wsdl</wsdlFile>
+                            <servicesXmlFile>${basedir}/src/main/resources/services/services-groups.xml</servicesXmlFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>second-execution</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>aar</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFile>${basedir}/src/main/resources/wsdl/OfficeService.wsdl</wsdlFile>
+                            <servicesXmlFile>${basedir}/src/main/resources/services/services-groups.xml</servicesXmlFile>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
